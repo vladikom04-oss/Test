@@ -7,9 +7,12 @@ public class WepaonView : MonoBehaviour
 
     private Color fireColor;
 
+    private IPlayerViewModel _viewModel;
     public void Initialize(IPlayerViewModel playerViewModel)
     {
-        playerViewModel.OnShoot += Shoot;
+        _viewModel = playerViewModel;
+        _viewModel.OnShoot += Shoot;
+        _viewModel.OnDied += Disponse;
         fireColor = fire.color;
         fireColor.a = 0f;
         fire.color = fireColor;
@@ -27,5 +30,10 @@ public class WepaonView : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         fireColor.a = 0f;
         fire.color = fireColor;
+    }
+    private void Disponse()
+    {
+        _viewModel.OnShoot -= Shoot;
+        _viewModel.OnDied -= Disponse;
     }
 }

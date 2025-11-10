@@ -5,18 +5,25 @@ public class AmmoView : MonoBehaviour
 {
     private TextMeshProUGUI ammo;
 
-    private IPlayerViewModel viewModel;
+    private IPlayerViewModel _viewModel;
 
     public void Initialize(IPlayerViewModel playerViewModel)
     {
-        viewModel = playerViewModel;
-        playerViewModel.OnShoot += Shoot;
+        _viewModel = playerViewModel;
+        _viewModel.OnShoot += Shoot;
+        _viewModel.OnDied += Disponse;
         ammo = GetComponent<TextMeshProUGUI>();
-        ammo.text = (viewModel.PlayerData.selectedWeaponAmmo).ToString();
+        ammo.text = (_viewModel.PlayerData.selectedWeaponAmmo).ToString();
     }
 
     private void Shoot()
     {
-        ammo.text = (viewModel.PlayerData.selectedWeaponAmmo).ToString();
+        ammo.text = (_viewModel.PlayerData.selectedWeaponAmmo).ToString();
+    }
+
+    private void Disponse()
+    {
+        _viewModel.OnShoot -= Shoot;
+        _viewModel.OnDied -= Disponse;
     }
 }
