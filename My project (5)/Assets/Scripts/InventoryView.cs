@@ -9,7 +9,8 @@ public class InventoryView : MonoBehaviour
     [SerializeField] private InventorySlotView slotPrefab;
     [SerializeField] private Button closeButton;
     [SerializeField] private Button deleteButton;
-    [SerializeField] private float slotInterval = 1.5f;
+    [SerializeField] private float slotIntervalx = 13f;
+    [SerializeField] private float slotIntervaly = 20f;
 
     private IPlayerViewModel _playerViewModel;
     private List<InventorySlotView> _slots = new List<InventorySlotView>();
@@ -23,7 +24,9 @@ public class InventoryView : MonoBehaviour
         for (int i = 0; i < playerViewModel.PlayerData.inventory.Length; i++)
         {
             var slotView = Instantiate(slotPrefab, slotsParent);
-            slotView.transform.position += new Vector3((i % 5) * slotInterval, -(i / 5) * slotInterval, 0f);
+            RectTransform rect = slotView.GetComponent<RectTransform>();
+            rect.anchoredPosition = new Vector2(-39, 32);
+            rect.anchoredPosition += new Vector2((i % 5) * slotIntervalx, -(i / 5) * slotIntervaly);
             slotView.Initialize(i, playerViewModel.PlayerData.inventory[i]);
             slotView.OnSlotClicked += OnSlotSelected;
             _slots.Add(slotView);

@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 1859869088375659451}
   - component: {fileID: 6480141467941070158}
   - component: {fileID: 555806464386738552}
-  - component: {fileID: 9183375690299169493}
   - component: {fileID: 6522337433668228605}
   m_Layer: 0
   m_Name: Player
@@ -106,7 +105,6 @@ MonoBehaviour:
   damage: 25
   rb: {fileID: 555806464386738552}
   healthBar: {fileID: 2873524768841481360}
-  animator: {fileID: 9183375690299169493}
   wepaon: {fileID: 1277900166664316344}
 --- !u!50 &555806464386738552
 Rigidbody2D:
@@ -129,27 +127,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &9183375690299169493
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173956153344517976}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 71364671bb15b5e40b81378553475a76, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &6522337433668228605
 CircleCollider2D:
   m_ObjectHideFlags: 0
